@@ -12,11 +12,17 @@
 <body>
     <header>Weather App</header>
 
-    <div class="left-container left-row">
-        <div class="card-header">
-            
+        <div class="flex-left">
+            <div class="card">
+                <h3 class="card-header text-uppercase">Search By City or Zipcode</h3>
+                <form id="city-form" class="card-body">
+                  <label for="cityname" class="form-label">City</label>
+                  <input name="cityname" id="cityname" type="text" autofocus="true" class="city-input" />
+                  <button type="submit" class="btn">Find City</button>
+                </form>
+            </div>
         </div>
-    </div>
+    
 
     <div class="container right-row">
         <div class="card-header">
