@@ -11,25 +11,39 @@
 </head>
 <body>
     <header>Weather App</header>
-
-        <div class="flex-left">
-            <div class="card">
-                <h3 class="card-header text-uppercase">Search By City or Zipcode</h3>
+    <div class="main">
+        <aside id="city-search" class="container col-sm-12 col-lg-4">
+            <div class="card-header">
+                <h3 class="card title">Search By City or Zipcode</h3>
                 <form id="city-form" class="card-body">
-                  <label for="cityname" class="form-label">City</label>
-                  <input name="cityname" id="cityname" type="text" autofocus="true" class="city-input" />
-                  <button type="submit" class="btn">Find City</button>
+                    <label for="cityname" class="form-label">City</label>
+                    <input name="cityname" id="cityname" type="text" autofocus="true" class="city-input" />
+                    <button type="submit" class="btn">Find City</button>
                 </form>
             </div>
-        </div>
-    
-
-    <div class="container right-row">
-        <div class="card-header">
-            <div class="card"></div>
+        </aside>
+        
+        <div class="city-container col-sm-12 col-lg-4">
+            <div class="card-header today-container">
+                <div class="card weather-today">
+                    <h3 id="weather" class="title">Todays Weather</h3>
+                </div>
+                <div id="searched-cities"></div>
+            </div>
+            <div class="five-day container" id="future-forecast">
+                <div class="title">5-Day Forecast</div>
+                <div id="weather-icons" class="future">
+                </div>
+            </div>
+            
         </div>
     </div>
     
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
 <script src="script.js"></script>
 </body>
 </html>
