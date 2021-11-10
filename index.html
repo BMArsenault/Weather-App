@@ -14,11 +14,11 @@
     <div class="main">
         <aside id="city-search" class="container col-sm-12 col-lg-4">
             <div class="card-header">
-                <h3 class="card title">Search By City or Zipcode</h3>
+                <h3 class="card title">Search for a City:</h3>
                 <form id="city-form" class="card-body">
                     <label for="cityname" class="form-label">City</label>
                     <input name="cityname" id="cityname" type="text" autofocus="true" class="city-input" />
-                    <button type="submit" class="btn">Find City</button>
+                    <button type="submit" id="search" class="btn">Search</button>
                 </form>
             </div>
         </aside>
@@ -26,7 +26,7 @@
         <div class="city-container col-sm-12 col-lg-4">
             <div class="card-header today-container">
                 <div class="card weather-today">
-                    <h3 id="weather" class="title">Todays Weather</h3>
+                    <h3 id="weather" class="title"></h3>
                 </div>
                 <div id="searched-cities"></div>
             </div>
