@@ -1,4 +1,69 @@
 * {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px;
+}
+
+header {
+    display: block;
+    background-color: cornflowerblue;
+    border: solid black;
+    text-align: center;
+    /* border-bottom: 0px; */
+}
+
+.left-panel {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: solid black;
+    background-color: whitesmoke;
+    width: 35vw;
+    height: 85vh;
+    margin-right: 10px;
+    margin-top: 10px;
+   margin-left: 10px;
+}
+
+.current-day {
+    display: block;
+    border: solid black;
+    width: 75vw;
+    background-color: whitesmoke;
+    height: 40vh;
+    margin-top: 400px;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.five-day {
+display: block;
+border: solid black;
+width: 75vw;
+height: 44.5vh;
+margin-top: 290px;
+text-align: center;
+
+}
+
+.main-container {
+    display: flex;
+
+}
+
+ 
+h2 {
+    border-bottom: solid cornflowerblue;
+}
+
+.cards {
+    display: flex;
+
+}
+
+
+
+/* * {
     box-sizing: border-box;
 }
 
@@ -34,4 +99,4 @@ header {
 #weather-icons {
     display: flex;
     flex-wrap: wrap;
-}
+} */
