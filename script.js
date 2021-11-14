@@ -13,23 +13,23 @@ var queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=${cityInputEl}
 
 function displayTodayWeather(data) {
   // create card for today's weather
-  var cityEl = document.createElement("div")
+  var city = document.createElement("div")
   city.classList.add("city");
 
-  var iconEl = document.createElement("img")
-  iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png");
+  var icon = document.createElement("img")
+  icon.setAttribute("src", "http://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png");
 
-  var tempEl = document.createElement("div")
-  tempEl.textContent = "Temp: " + (Math.round(day.main.temp)) + " °F";
+  var temp = document.createElement("div")
+  temp.textContent = "Temp: " + (Math.round(day.main.temp)) + " °F";
 
-  var windEl = document.createElement("div")
-  windEl.textContent = (Math.round(day.wind.speed)) + " mph";
+  var wind = document.createElement("div")
+  wind.textContent = (Math.round(day.wind.speed)) + " mph";
 
-  var humidityEl = document.createElement("div")
-  humidityEl.textContent = "Humidity: " + day.main.humidity + "%";
+  var humidity = document.createElement("div")
+  humidity.textContent = "Humidity: " + day.main.humidity + "%";
 
-  var indexEl = document.createElement("div")
-  indexEl.textContent = "UV Index: " + data.current.uvi;
+  var index = document.createElement("div")
+  index.textContent = "UV Index: " + data.current.uvi;
   if(data.current.uvi < 2){
     $("#uvi-current").addClass("low"); $("#uvi-current").removeClass("medium"); $("#uvi-current").removeClass("high"); 
   } else if (data.current.uvi > 5){
@@ -38,12 +38,12 @@ function displayTodayWeather(data) {
     $("#uvi-current").removeClass("low"); $("#uvi-current").addClass("medium"); $("#uvi-current").removeClass("high"); 
   };
 
-  searchedCity.appendChild(cityEl)
-  searchedCity.appendChild(iconEl)
-  searchedCity.appendChild(tempEl)
-  searchedCity.appendChild(windEl)
-  searchedCity.appendChild(humidityEl)
-  searchedCity.appendChild(indexEl)
+  searchedCity.appendChild(city)
+  searchedCity.appendChild(icon)
+  searchedCity.appendChild(temp)
+  searchedCity.appendChild(wind)
+  searchedCity.appendChild(humidity)
+  searchedCity.appendChild(index)
 
 
 };
@@ -54,7 +54,8 @@ var displayFiveDay = function(day) {
   weather.innerHTML = ""
   for (let index = 0; index < 5; index++) {
 
-
+  }
+}
 
 
 function displayFiveDay(data) {
@@ -62,30 +63,26 @@ function displayFiveDay(data) {
   var card = document.createElement("div")
   card.classList.add("container", "cards");
 
-  var dateEl = document.createElement("div")
+  var date = document.createElement("div")
   date.textContent = new Date(day.dt_txt).toLocaleDateString();
 
-  var iconEl = document.createElement("img")
-  iconEl.setAttribute("src", "http://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png");
+  var icon = document.createElement("img")
+  icon.setAttribute("src", "http://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png");
 
-  var tempEl = document.createElement("div")
-  tempEl.textContent = "Temp: " + (Math.round(day.main.temp)) + " °F";
+  var teml = document.createElement("div")
+  temp.textContent = "Temp: " + (Math.round(day.main.temp)) + " °F";
 
-  var windEl = document.createElement("div")
-  windEl.textContent = (Math.round(day.wind.speed)) + " mph";
+  var wind = document.createElement("div")
+  wind.textContent = (Math.round(day.wind.speed)) + " mph";
 
-  var humidityEl = document.createElement("div")
-  humidityEl.textContent = "Humidity: " + day.main.humidity + "%";
+  var humidity = document.createElement("div")
+  humidity.textContent = "Humidity: " + day.main.humidity + "%";
 
   weather.appendChild(card)
-  card.appendChild(dateEl)
-  card.appendChild(iconEl)
-  card.appendChild(tempEl)
-  card.appendChild(windEl)
-  card.appendChild(humidityEl)
+  card.appendChild(date)
+  card.appendChild(icon)
+  card.appendChild(temp)
+  card.appendChild(wind)
+  card.appendChild(humidity)
 
 };
-
-
-// cityFormEl.addEventListener("submit", formSubmitHandler);
-

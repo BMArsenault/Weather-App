@@ -96,3 +96,6 @@
 
 
 // save search and append to page
+
+// cityFormEl.addEventListener("submit", formSubmitHandler);
+
