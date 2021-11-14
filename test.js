@@ -1,41 +1,3 @@
-          //______________Day 1
-        // console.log(data.list[0].dt_txt);
-        // console.log(data.list[0].weather);
-        // console.log(data.list[0].main.temp);
-        // console.log(data.list[0].main.humidity);
-        // console.log(data.list[0].wind.speed);
-        //   //_______________Day 2
-        // console.log(data.list[8].dt_txt);
-        // console.log(data.list[8].weather);
-        // console.log(data.list[8].main.temp);
-        // console.log(data.list[8].main.humidity);
-        // console.log(data.list[8].wind.speed);
-        //   //_______________Day 3
-        // console.log(data.list[16].dt_txt);
-        // console.log(data.list[16].weather);
-        // console.log(data.list[16].main.temp);
-        // console.log(data.list[16].main.humidity);
-        // console.log(data.list[16].wind.speed);
-        //   //_______________Day 4
-        // console.log(data.list[24].dt_txt);
-        // console.log(data.list[24].weather);
-        // console.log(data.list[24].main.temp);
-        // console.log(data.list[24].main.humidity);
-        // console.log(data.list[24].wind.speed);
-        //   //_______________Day 5
-        // console.log(data.list[32].dt_txt);
-        // console.log(data.list[32].weather);
-        // console.log(data.list[32].main.temp);
-        // console.log(data.list[32].main.humidity);
-        // console.log(data.list[32].wind.speed);
-          // var latitude2= data.city.coord.lat;
-          // var longitude2 = data.city.coord.lon;
-//         });
-// };
-
-// get the input first
-// search("Phoenix");
-
 // var urlWeather = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
 
 //   fetch(urlWeather)
@@ -61,7 +23,7 @@
 //     })
 //   };    
 
-
+// var cityName = document.querySelector("button");
 
 // Get date at top of screen
 // const today = moment().format("LL");
@@ -69,3 +31,68 @@
 
 //event listener
 // document.getElementById("button-addon2").addEventListener("click", search);
+
+
+  // var urlFiveDay = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+  // fetch(urlFiveDay)
+  //   .then((res) => res.json())
+  //   .then(function (data) {
+  //     console.log(data);
+  //     // var latitude = data.coord.lat;
+  //     // var longitude = data.coord.lon;
+  //   });
+
+  // function getWeather(city)
+
+//   function search(cityName, latitude, longitude) {
+//     console.log("here");
+  
+  
+//     var urlLocation = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+//     fetch(urlLocation)
+//       .then((res) => res.json())
+//       .then(function (data) {
+//         console.log(data.coord);
+//         var latitude = data.coord.latitude;
+//         var longitude = data.coord.lon;
+//         // var uvIndex = data.current.uvi;
+  
+
+
+// save search to localStorage
+// var search =
+// function saveSearch() {
+//     localStorage.setItem("search", JSON.stringify(search))
+// }
+
+// $(".saveBtn").on("click", function () {
+//     // Get nearby values of the description in JQuery
+//     var text = $(this).siblings(".description").val();
+//     var time = $(this).parent().attr("id");
+//     // Set the value of the specified local storage item
+//     localStorage.setItem(time, text);
+//     })
+
+
+    //     searchedCities.innerHTML = "";
+    
+    //     for (var i = 0; i < searches.length; i++) {
+    //         var search = searches[i];
+    //         // get a list of searched cities
+    //         var div = document.createElement("div");
+    //         // create buttons for already searched city
+    //         var button = document.createElement("button");
+    
+    //         button.textContent = search;
+    //         button.classList.add("btn")
+    //         button.onclick = handleClick
+    //         div.setAttribute("data", i);
+    //         div. appendChild(button);
+    //         searchedCities.appendChild(div);
+    //     }
+    // };
+    // }
+
+
+// save search and append to page
