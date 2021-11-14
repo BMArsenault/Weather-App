@@ -47,22 +47,26 @@ function search(cityName, latitude, longitude) {
 var displayFiveDay = function (data) {
   for (let index = 0; index < 5; index++) {
 
-      var forecastEl = document.querySelector("#forecast-" + (index+1));
+      var cardEl = document.createElement("div")
+      card.classList.add("container", "cards");
 
-      var dayTime = document.createElement("p");
-      dayTime.textContent = data.list[7+(index*8)].dt_txt
-      forecastEl.append(dayTime);
+      var dateEl = document.createElement("div")
+      date.textContent = ;
 
-      var tempEl = document.createElement("p");
-      tempEl.textContent = data.list[7+(index*8)].main.temp
-      forecastEl.append(tempEl);
+      var iconEl = document.createElement("img")
+      add weather condition image;
 
-      var windEl = document.createElement("p");
-      windEl.textContent = data.list[7+(index*8)].wind.speed
-      forecastEl.append(windEl);
+      var tempEl = document.createElement("div")
+      tempEl.textContent = "Temp: " + (Math.round(day.main.temp)) + " °F";
+
+      var windEl = document.createElement("div")
+      windEl.textContent = (Math.round(day.wind.speed)) + " mph";
+  
+      var humidityEl = document.createElement("div")
+      humidityEl.textContent = "Humidity: " + day.main.humidity + "%";
       
   }
-}
+};
 
 
 
@@ -77,18 +81,6 @@ var displayFiveDay = function (data) {
 // }
 
 // create new cards for 5-day forecast according to acceptance criteria
-
-// var card = document.createElement("div")
-// 
-
-// var date = document.createElement("div")
-// date.textContent = create date calc.
-
-// var icon = document.createElement("img")
-// add weather condition image
-
-// var temp = document.createElement("div");
-// temp.textContent = "Temp: " + data.current.temp + " °F";
 
 // var wind = document.createElement("div");
 // wind.textContent = "Wind: " + data.current.wind_speed + " MPH";
