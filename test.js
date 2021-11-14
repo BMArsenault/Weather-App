@@ -1,6 +1,6 @@
 var cityFormEl = document.querySelector("#city-form");
 var cityInputEl = document.querySelector("#cityname");
-var todayWeatherEl = document.querySelector("#weather");
+var todayWeather = document.querySelector("#weather");
 var weather = document.querySelector("#weather-icons");
 var searchedCity = document.querySelector("#searched-city");
 
@@ -9,27 +9,16 @@ var search = [];
 var apiKey = "712d985d18bace0530a352f906aeff07";
 var queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=${cityInputEl}&APPID=712d985d18bace0530a352f906aeff07';
 
-// Saves submitted cities to local storage
-
-
-cityFormEl.addEventListener("submit", function (event) {
-  event.preventDefault();
-  var searchText = cityInputEl.value.trim();
-  cityInputEl.value = ""
-
-  if (searchText === "") {
-    return;
-  }
-})
-
 
 
 // create a function to search for today's weather
 
-function displayTodayWeather(data) {
-  // create card for today's weather
+function displayTodayWeather(result) {
+  todayWeather.innerHTML = ""
+// create card for today's weather
   var city = document.createElement("div")
-  city.classList.add("city");
+  city.classList.add("city")
+  city.textContent = result.name + " (" + new date().toLocaleDateString() + ")"
 
   var icon = document.createElement("img")
   icon.setAttribute("src", "http://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png");
@@ -38,12 +27,12 @@ function displayTodayWeather(data) {
   temp.textContent = "Temp: " + (Math.round(day.main.temp)) + " °F";
 
   var wind = document.createElement("div")
-  wind.textContent = (Math.round(day.wind.speed)) + " mph";
+  wind.textContent = "Wind: " + day.wind.speed + " mph";
 
   var humidity = document.createElement("div")
   humidity.textContent = "Humidity: " + day.main.humidity + "%";
 
-  // taken from group get together.  Figure out $ to make it cleaner later.
+  // taken from group get together.  Figure out $ to make it cleaner later, if possible.
   var index = document.createElement("div")
   index.textContent = "UV Index: " + data.current.uvi;
   if(data.current.uvi < 2){
@@ -60,16 +49,16 @@ function displayTodayWeather(data) {
   searchedCity.appendChild(wind)
   searchedCity.appendChild(humidity)
   searchedCity.appendChild(index)
-
-
 };
 
 
 //  function to display 5 day forecast
-var displayFiveDay = function(day) {
+var displayFiveDay = function(results) {
   weather.innerHTML = ""
-  for (let index = 0; index < 5; index++) {
-
+  for (let result of results.list) {
+    if (result.dt_txt.split(" ")[1] === "12:00:00") {
+      displayFiveDay(result)
+    }
   }
 }
 
@@ -77,7 +66,7 @@ var displayFiveDay = function(day) {
 function displayFiveDay(data) {
   // create new cards for 5-day forecast according to acceptance criteria
   var card = document.createElement("div")
-  card.classList.add("container", "cards");
+  card.classList.add("container", "cards", "bg-info");
 
   var date = document.createElement("div")
   date.textContent = new Date(day.dt_txt).toLocaleDateString();
@@ -100,8 +89,44 @@ function displayFiveDay(data) {
   card.appendChild(temp)
   card.appendChild(wind)
   card.appendChild(humidity)
-
 };
+
+// store the searched city in localstorage
+
+function store() {
+  localStorage.setItem("search", JSON.stringify(searches));
+}
+
+// add click event listener to submit city
+
+cityFormEl.addEventListener("submit", function (event) {
+  event.preventDefault();
+  var searchText = cityInputEl.value.trim();
+  cityInputEl.value = ""
+
+  if (searchText === "") {
+    return;
+  }
+  var newSearch = []
+  for (var i = 0; i < searches.length; i++) {
+    if (searches[i] !== searchText) {
+      newSearches.push(searches[i])
+    }
+  }
+  newSearches.unshift(searchText)
+  searches = newSearches
+
+  getWeather(searchText)
+  searchText.value = "";
+
+  getForecast(searchText)
+  searchText.value = "";
+
+  store();
+  //saved searches function
+})
+
+
 
 
 // var urlWeather = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;

@@ -36,3 +36,15 @@ header {
     display: flex;
     flex-wrap: wrap;
 }
+
+.high{
+    background-color: red;
+}
+
+.medium{
+    background-color: yellow;
+}
+
+.low{
+    background-color: green;
+}
