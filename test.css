@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    font-size: 48px;
+    background-color: blue;
+    padding: 40px;
+    text-align: center;
+    color: white;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+#city-search {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.city-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+}
+
+.card {
+    display:flex;
+    flex-direction: column;
+}
+
+#weather-icons {
+    display: flex;
+    flex-wrap: wrap;
+}

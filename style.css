@@ -1,38 +1,54 @@
-* {
-    box-sizing: border-box;
-}
-
 header {
-    font-size: 48px;
-    background-color: blue;
-    padding: 40px;
     text-align: center;
+    background-color: cornflowerblue;
     color: white;
+    padding: 15px;
+    border: solid black;
 }
 
-.main {
-    display: flex;
-    flex-direction: row;
+hr {
+    box-sizing: content-box;
+    /* 1 */
+    height: 0;
+    /* 1 */
+    overflow: visible;
+    /* 2 */
+  };
+  
+.todayWeatherContainer {
+    border: solid black;
 }
 
-#city-search {
+ul{
+    list-style-type: none;
+};
+
+.fiveday{
     display: flex;
     flex-direction: column;
-    text-align: center;
 }
 
-.city-container {
-    display: flex;
-    flex-direction: column;
-    padding-left: 100px;
+.card{
+    display: inline-block;
+    background-color: cornflowerblue;
+    color: white;
+    border: solid black;
+
 }
 
-.card {
-    display:flex;
-    flex-direction: column;
+.high{
+    background-color: red;
 }
 
-#weather-icons {
-    display: flex;
-    flex-wrap: wrap;
+.medium{
+    background-color: yellow;
+}
+
+.low{
+    background-color: green;
+}
+.UV{
+    width: fit-content;
+    padding: 5px;
+    border-radius: 25%;
 }
