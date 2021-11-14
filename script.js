@@ -7,7 +7,7 @@ var searchedCities = document.querySelector("#searched-cities");
 function getWeather(city)
 
 
-var apiKey = "712d985d18bace0530a352f906aeff07";
+// var apiKey = "712d985d18bace0530a352f906aeff07";
 var queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=${cityInputEl}&APPID=712d985d18bace0530a352f906aeff07';
 
 
@@ -37,16 +37,11 @@ function search(cityName, latitude, longitude) {
       // var uvIndex = data.current.uvi;
 
 
-//______________________________Weather for today 
-
-
-// 
-  
 
 //  function to display 5 day forecast
 var displayFiveDay = function (data) {
   for (let index = 0; index < 5; index++) {
-
+  // create new cards for 5-day forecast according to acceptance criteria
       var cardEl = document.createElement("div")
       card.classList.add("container", "cards");
 
@@ -68,27 +63,6 @@ var displayFiveDay = function (data) {
   }
 };
 
-
-
-// past attempts before study group
-
-
-
-
-// get 5 day weather forecast for cards
-// function getCityWeather(result) {
-    
-// }
-
-// create new cards for 5-day forecast according to acceptance criteria
-
-// var wind = document.createElement("div");
-// wind.textContent = "Wind: " + data.current.wind_speed + " MPH";
-
-// var humidity = document.createElement("div")
-// humidity.textContent = "Humidity: " + data.current.humidity + " %"
-
-// Append these to future-forecast
 
 // cityFormEl.addEventListener("submit", formSubmitHandler);
 
@@ -130,4 +104,3 @@ var displayFiveDay = function (data) {
 
 
 // save search and append to page
-// 
