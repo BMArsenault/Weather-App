@@ -40,7 +40,7 @@ THEN I am again presented with current and future conditions for that city
 
 ## Screenshot
 
-* [Live Github Pages:]()
+* [Live Github Pages:](https://bmarsenault.github.io/Weather-App/)
 * [Repo (here):](https://github.com/BMArsenault/Weather-Appr)
 * ![Screenshot](https://user-images.githubusercontent.com/89749979/141723607-c46ab73d-5293-4340-a6d5-74852ec958d6.png)
 
