@@ -1,8 +1,54 @@
 var searchHistory = [];
+var apiKey = "712d985d18bace0530a352f906aeff07";
 
-var apiKey = "128c8c746b69ffc06f48c91a2851d72f";
+//function save history__________________________________________________________________
+function saveHistory(data) { 
+  searchHistory.push(data);
+  localStorage.setItem("searched-city", JSON.stringify(searchHistory));
+}
 
-function search(cityName, latitude, longitude) {
+// function Load History________________________________________________________
+function loadHistory() {
+  var history = localStorage.getItem("searched-city");
+  history = JSON.parse(history);
+  for(i in history) {
+    searchHistory.push(history[i]);
+  }
+};
+// function create searchistory button
+
+// function createButton(citySearchEl) {
+// var buttonEl = document.createElement("button");
+// buttonEl.setAttribute("data-search", citySearchEl);
+// buttonEl.textContent = citySearchEl;
+// buttonEl.className = "history";
+// document.append(buttonEl);
+// };
+
+
+
+///CREATE BUTTON FOR SEARCHES_________________________________________________
+function createButton(city) {
+
+  var buttonEl = document.createElement("button");
+  buttonEl.setAttribute("data-search", city);
+  buttonEl.textContent = city;
+  buttonEl.className = "btn btn-dark m-2"
+  $("#history").append(buttonEl);
+}
+
+function historyBtn() {
+  // for (i = 0; i < searchHistory.length; i++)
+  for (i in searchHistory) {
+    createButton(searchHistory[i]) 
+  }
+};
+
+
+
+
+
+function search(cityName) {
   var urlLocation = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
   fetch(urlLocation)
     .then((res) => res.json())
@@ -20,17 +66,19 @@ function search(cityName, latitude, longitude) {
           console.log(data.current.temp);
           $("#temp-current")
             .empty()
-            .append(data.current.temp + " F");
+            .append("Temperature:" + " " + data.current.temp + " F");
           console.log(data.current.wind_speed);
           $("#wind-current")
             .empty()
-            .append("Wind: " + (Math.round(data.current.wind_speed) + " MPH"));
+            .append("Wind Speed:" + " " + data.current.wind_speed + " MPH");
           console.log(data.current.humidity);
           $("#humidity-current")
             .empty()
-            .append(data.current.humidity + "%");
+            .append("Humidity:" + " " + data.current.humidity + "%");
           console.log(data.current.uvi);
-          $("#uvi-current").empty().append(data.current.uvi);
+          $("#uvi-current")
+            .empty()
+            .append("UV Index:" + " " + data.current.uvi);
           //________If statement to determine color of UVI index box
           if (data.current.uvi < 2) {
             $("#uvi-current").addClass("low");
@@ -63,15 +111,15 @@ function search(cityName, latitude, longitude) {
           console.log(data.list[0].main.temp_max);
           $("#temp-day-1")
             .empty()
-            .append("Temp: " + (Math.round(data.list[0].main.temp_max) + "F"));
+            .append("Temp: " + data.list[0].main.temp_max + "F");
           console.log(data.list[0].main.humidity);
           $("#humidity-day-1")
             .empty()
-            .append("Humidity: " + (Math.round(data.list[0].main.humidity) + "%"));
+            .append("Humidity: " + data.list[0].main.humidity + "%");
           console.log(data.list[0].wind.speed);
           $("#wind-day-1")
             .empty()
-            .append("Wind: " + (Math.round(data.list[0].wind.speed) + " MPH"));
+            .append("Wind: " + data.list[0].wind.speed + " MPH");
           //_______________Day 2
           console.log(data.list[8].dt_txt);
           $("#date-2").empty().append(data.list[8].dt_txt);
@@ -160,27 +208,37 @@ function search(cityName, latitude, longitude) {
           $("#wind-day-5")
             .empty()
             .append("Wind: " + data.list[32].wind.speed + " MPH");
+
+          //Adding user inputs to search history array
+          var searchedCity = $("#citysearch").val();
+          saveHistory(searchedCity);
+          console.log(searchHistory);
         });
     });
 }
-
-//when save button is clicked, store input to local storage
-// searchBtn.on("click", function () {
-//     let time = $(this).siblings(".hour").text();
-//     let usrTxt = $(this).siblings(".description").val();
-//    console.log(usrTxt);
-//    console.log(time);
-//    localStorage.setItem(time, usrTxt);
-//  });
-
-// get the input first
+function clearHistory() {
+  localStorage.clear();
+  location.reload();
+};
+// Event listener ---> User clicks, enters city, search function is called with user input
 document.getElementById("searchBtn").addEventListener("click", function () {
   var citySearchEl = document.querySelector("#citysearch").value;
   search(citySearchEl);
-
-  var searchedCity = $("#citysearch").val();
-  localStorage.setItem("searched city", searchedCity);
-  searchHistory.push(document.getElementById("citysearch").value);
-  console.log(searchHistory);
-
+  createButton(citySearchEl);
 });
+// Get date at top of screen
+const today = moment().format("LL");
+$("#currentDay")
+  .empty()
+  .append("Today is: " + today);
+
+//event listener
+$(document).on("click",".btn", function() {
+  console.log("IN BUTTON FUNCTION");
+  var citySearchEl = $(this).attr("data-search");
+  search(citySearchEl);
+})
+
+loadHistory();
+//called function_________________________________________________________________
+historyBtn();

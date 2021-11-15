@@ -17,7 +17,9 @@
                 <input type="search" id="citysearch">
                 <button id="searchBtn">Search</button>
                 <hr class="weather-hr">
-                <div class="history" id="history"></div>
+                <div class="history" id="history">
+                    <button onclick="clearHistory()">Clear History</button>
+                </div>
             </aside>
             <div class="col-lg-9 pb-4" id="rightside">
                 <div class="mt-1" id="todayWeatherContainer">
@@ -29,7 +31,7 @@
                 </div>
                 <!-- FIVE DAY BELOW -->
                 <div class="card-deck fiveday" id="5-day">
-
+                    <p class="five-day-title">5-Day Forecast</p>
                     <div class="card" style="width: 15%; margin: 0;">
                         <h4 class="card-title" id="date-1"></h4>
                         <div class="card-body">
